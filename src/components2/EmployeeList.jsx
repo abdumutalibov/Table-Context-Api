@@ -7,13 +7,11 @@ const EmployeeList = () => {
 
 const [showAlert, setShowAlert]=useState(false)
 const {employees} = useContext(EmployeeContext)
-const {deleteEmployee} = useContext(EmployeeContext)
 
 const [show, setShow]=useState(false)
 const handleShow = () => setShow(true)
 const handleClose =()=> setShow(false)
 
-const [post , setPost]=useState('post')
 
 const handleShowAlert =()=>{
   setShowAlert(true);

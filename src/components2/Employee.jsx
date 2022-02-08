@@ -1,10 +1,18 @@
-import React, { useContext } from 'react';
-import { OverlayTrigger, Tooltip } from 'react-bootstrap';
-import { EmployeeContext } from './contexts/EmployeeContext';
-
+import { useEffect, useState } from "react";
+import { useContext } from "react";
+import { Button, Modal, OverlayTrigger, Tooltip } from "react-bootstrap";
+import { EmployeeContext } from "./contexts/EmployeeContext";
+import EditFrom from "./EditFrom";
 const Employee = ({employee}) => {
+  const {deleteEmployee} =useContext(EmployeeContext);
+  const [show, setShow]=useState(false)
+  const handleShow =()=>setShow(true)
+  const handleClose =()=>setShow(false)
 
-  const {deleteEmployee} =useContext(EmployeeContext)
+
+  useEffect(()=>{
+    handleClose();
+  },[employee])
   return (
   <>
   
@@ -13,19 +21,33 @@ const Employee = ({employee}) => {
   <td>{employee.address}</td>
   <td>{employee.phone}</td>
   <td>
-    <OverlayTrigger overlay={<Tooltip id={`tooltip-top`}>Edit</Tooltip>}>
-       <button className='btn text-warning btn-act'>
-    <i className='material-icons'>&#xE254;</i>
-
-    </button>
-    </OverlayTrigger>
-   <OverlayTrigger overlay={<Tooltip id={`tooltip-top`}> Delete</Tooltip>}>
-<button onClick={() => deleteEmployee(employee.id)} className='btn text-danger btn-act'>
-
-    <i className='material-icons'>&#xE872;</i>
+<OverlayTrigger overlay={<Tooltip id={`tooltip-top`}>Edit</Tooltip>}>
+<button onClick={handleShow} className="btn text-warning btn-act">
+  <i className="material-icons">&#xE254;</i>
 </button>
-   </OverlayTrigger>
+</OverlayTrigger>
+<OverlayTrigger overlay={<Tooltip id={`tooltip-top`}>Edit</Tooltip>}>
+<button onClick={()=> deleteEmployee(employee.id)} className="btn text-danger btn-act">
+  <i className="material-icons">&#xE872;</i>
+</button>
+</OverlayTrigger>
+  
   </td>
+  <Modal show={show}>
+    <Modal.Header onClick={handleClose} closeButton>
+      <Modal.Title>
+        Edit Employee
+      </Modal.Title>
+    </Modal.Header>
+    <Modal.Body>
+      <EditFrom theEmployee={employee}/>
+    </Modal.Body>
+    <Modal.Footer>
+      <Button onClick={handleClose} type="submit">
+        Close Button
+      </Button>
+    </Modal.Footer>
+  </Modal>
   </>
     );
 };
