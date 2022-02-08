@@ -1,74 +1,76 @@
-import React from 'react';
-import { useState, useContext} from 'react';
+import React, { useContext } from 'react';
+import { useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { EmployeeContext } from './contexts/EmployeeContext';
 
-const AddFrom = () => {
+const AddForm = () => {
 
-const {addEmployee} =useContext(EmployeeContext);
+  const {addEmployee} =useContext(EmployeeContext)
 
-const [newEmployee, setNewEmployee] =useState({
-  name:"", email:"" ,address:"", phone:""
-});
-
-const onInputChange =(e)=>{
-  setNewEmployee({...newEmployee,[e.target.name]:e.target.value})
+  const [newEmployes, setEmployee]=useState(
+    {name:"" ,email:"", address:"", phone:""}
+  )
+const onInputChange=(e)=>{
+ 
+  setEmployee({...newEmployes,[e.target.name]: e.target.value})
 }
 
-const {name, email, address, phone}=newEmployee;
+const {name, email, address, phone} =newEmployes;
 
 const handleSubmit=(e)=>{
-  e.preventDefault();
-  addEmployee(name, email, address, phone)
+ e.preventDefault()
+ addEmployee(name, email, address, phone)
 }
+
+
 
   return (
   <Form onSubmit={handleSubmit}>
     <Form.Group>
-      <Form.Control
+      <Form.Control 
       type='text'
       placeholder='Name'
       name='name'
-      value={name}
       required
+      value={name}
       onChange={onInputChange}
       />
     </Form.Group>
     <Form.Group>
-      <Form.Control
+      <Form.Control 
       type='email'
       placeholder='Email'
       name='email'
-      value={email}
       required
+      value={email}
       onChange={onInputChange}
       />
     </Form.Group>
     <Form.Group>
-      <Form.Control
-      type='address'
+      <Form.Control 
+      as ='textarea'
       placeholder='Address'
-      value={address}
       name='address'
       required
+      value={address}
       onChange={onInputChange}
       />
     </Form.Group>
     <Form.Group>
-      <Form.Control
+      <Form.Control 
       type='phone'
       placeholder='Phone'
-      value={phone}
       name='phone'
       required
+      value={phone}
       onChange={onInputChange}
       />
     </Form.Group>
-    <Button type='submit' variant='success'>
+    <Button type='submit'>
       Add New Employee
     </Button>
   </Form>
     );
 };
 
-export default AddFrom;
+export default AddForm;
