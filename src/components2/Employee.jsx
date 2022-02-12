@@ -4,7 +4,6 @@ import { useContext } from 'react';
 import { Button, Modal, OverlayTrigger, Tooltip } from 'react-bootstrap';
 import { EmployeeContext } from './contexts/EmployeeContext';
 import EditFrom from './EditFrom';
-import toast from 'react-hot-toast';
 
 const Employee = ({employee}) => {
 
