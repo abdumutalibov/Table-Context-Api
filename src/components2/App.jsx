@@ -1,6 +1,8 @@
 import React from 'react';
 import EmployeeList from './EmployeeList';
 import EmployeeContextProvider from './contexts/EmployeeContext'
+import {Toaster} from 'react-hot-toast'
+
 function App() {
   return (
   
@@ -13,7 +15,15 @@ function App() {
         </EmployeeContextProvider>
       </div>
     </div>
+    <Toaster 
+  position='bottom-right'
+  toastOptions={{
+style:{
+  fontSize: '1.4rem',
+}
+  }}/>
   </div>
+  
     );
 }
 

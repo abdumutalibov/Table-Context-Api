@@ -4,6 +4,7 @@ import { useContext } from 'react';
 import { Button, Modal, OverlayTrigger, Tooltip } from 'react-bootstrap';
 import { EmployeeContext } from './contexts/EmployeeContext';
 import EditFrom from './EditFrom';
+import toast from 'react-hot-toast';
 
 const Employee = ({employee}) => {
 
@@ -23,7 +24,7 @@ const Employee = ({employee}) => {
 <button onClick={handleShow} className='btn text-warning btn-act'><i className='material-icons'>&#xE254;</i></button>
     </OverlayTrigger>
     <OverlayTrigger overlay={<Tooltip id={`tooltip-top`}>Edit</Tooltip>}>
-<button onClick={()=>deleteEmployee(employee.id)} className='btn text-danger btn-act'><i className='material-icons'>&#xE872;</i></button>
+<button onClick={()=>deleteEmployee(employee.id)}  className='btn text-danger btn-act'><i className='material-icons'>&#xE872;</i></button>
     </OverlayTrigger>
   </td>
   <Modal show={show}>

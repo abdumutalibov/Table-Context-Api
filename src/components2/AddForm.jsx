@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { EmployeeContext } from './contexts/EmployeeContext';
+import toast from 'react-hot-toast';
 
 const AddForm = () => {
 
@@ -20,6 +21,8 @@ const {name, email, address, phone} =newEmployes;
 const handleSubmit=(e)=>{
  e.preventDefault()
  addEmployee(name, email, address, phone)
+ toast.success('Task Added Successfully');
+
 }
 
 

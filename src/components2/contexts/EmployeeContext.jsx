@@ -1,6 +1,8 @@
 import React, { createContext, useEffect } from "react";
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
+import toast from 'react-hot-toast';
+
 export const EmployeeContext = createContext();
 
 const EmployeeContextProvider = (props) => {
@@ -57,7 +59,9 @@ const EmployeeContextProvider = (props) => {
   };
 
   const deleteEmployee = (id) => {
-    setEmployees(employees.filter((employee) => employee.id != id));
+    setEmployees(employees.filter((employee) => employee.id !== id));
+    toast.success('Delete Successfully');
+
   };
 
   const updateEmployee = (id, updateEmployee) => {

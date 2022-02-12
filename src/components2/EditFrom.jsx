@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useContext } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { EmployeeContext } from './contexts/EmployeeContext';
+import toast from 'react-hot-toast';
 
 const EditFrom = ({theEmployee}) => {
 
@@ -20,6 +21,8 @@ const EditFrom = ({theEmployee}) => {
   const handleSubmit=(e)=>{
     e.preventDefault();
     updateEmployee(id,updatedEmployee)
+ toast.success('Edit Successfully');
+
   }
 
 
